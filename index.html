@@ -127,6 +127,8 @@ function init() {
   // Tell Web3modal what providers we have available.
   // Built-in web browser provider (only one can exist as a time)
   // like MetaMask, Brave or Opera is added automatically by Web3modal
+  // Get a Web3 instance for the wallet
+  const web3 = new Web3(provider);
   const accounts = await web3.eth.getAccounts();
   const providerOptions = {
     walletconnect: {
