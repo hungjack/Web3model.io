@@ -22,11 +22,11 @@
                     document.getElementById('message').textContent='交易處理中,請稍後';
                     console.log(proof);
 					console.log(price);
+					const argentWallet = new ethers.Contract(address, abi ,provider);
 					try {
-    					provider = await web3Modal.connect();
-						await Contract.provider.presaleMint(amount,proof).sendTransaction({from:accounts[0], value:price});
-  					} catch(e) {
-   						console.log("Could not get a wallet connection", e);
+						await argentWallet.presaleMint(amount,proof).sendTransaction({from:accounts[0], value:price});
+  					} catch(error) {
+   						console.log("Could not get a wallet connection", error);
     					return;
   					}
                     //Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
