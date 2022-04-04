@@ -23,7 +23,7 @@
                     console.log(proof);
 					console.log(price);
 					try {
-						Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
+							Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
 						console.log("try");
   					} catch(error) {
    						console.log("Could not get a wallet connection", error);
