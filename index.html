@@ -24,17 +24,17 @@
 					console.log(price);
 					try {
     					provider = await web3Modal.connect();
-						await provider.presaleMint(amount,proof).send({from:accounts[0], value:price});
+						await provider.presaleMint(amount,proof).sendTransaction({from:accounts[0], value:price});
   					} catch(e) {
    						console.log("Could not get a wallet connection", e);
     					return;
   					}
-                    Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
-                    .then(function(data){
-                        console.log(data);
-				              document.getElementById('message').textContent='交易處理結束';
+                    //Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
+                    //.then(function(data){
+                        //console.log(data);
+				        //document.getElementById('message').textContent='交易處理結束';
 			
-                    })
+                    //})
                 });
  
             });
