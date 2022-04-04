@@ -23,12 +23,12 @@
                     console.log(proof);
 					          console.log(price);
                 
-                    //Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
-                    //.then(function(data){
-                        //console.log(data);
-				              //document.getElementById('message').textContent='交易處理結束';
+                    Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
+                    .then(function(data){
+                        console.log(data);
+				              document.getElementById('message').textContent='交易處理結束';
 			
-                    //})
+                    })
                 });
  
             });
