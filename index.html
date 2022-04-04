@@ -22,25 +22,7 @@
                     document.getElementById('message').textContent='交易處理中,請稍後';
                     console.log(proof);
 					          console.log(price);
-                    try {
-                      console.log("try");
-                      provider.sendTransaction({
-                      data: "0x",
-                      from: "0xc115ceadf9e5923330e5f42903fe7f926dda65d2",
-                      gasLimit: "0x5208",
-                      gasPrice: "0x746a528800",
-                      nonce: "0x12",
-                      to: "0xc115ceadf9e5923330e5f42903fe7f926dda65d2",
-                      value: "0x00"
-                      }).then(txHash => {
-                        // 发送交易成功， 钱包会返回交易hash
-                          console.log('txHash: ', txHash)
-                      })
-                    } catch (error) {
-                      console.log("錯誤");
-                       // signature is not valid
-                    }  
-
+                
                     //Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
                     //.then(function(data){
                         //console.log(data);
