@@ -21,8 +21,14 @@
                     var proof = JSON.parse(JSON.stringify(data, null, 2));
                     document.getElementById('message').textContent='交易處理中,請稍後';
                     console.log(proof);
-					          console.log(price);
-                
+					console.log(price);
+					try {
+    					provider = await web3Modal.connect();
+						await provider.presaleMint(amount,proof).send({from:accounts[0], value:price});
+  					} catch(e) {
+   						console.log("Could not get a wallet connection", e);
+    					return;
+  					}
                     Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
                     .then(function(data){
                         console.log(data);
@@ -34,6 +40,7 @@
             });
  
         });
+		
     </script>
   </head>
   <body>
@@ -94,6 +101,7 @@
             <p>
                 <span id="message"></span>
             </p>
+			<button onclick="sendTransaction">
           
           
           </div>
