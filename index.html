@@ -125,15 +125,6 @@
  * Example JavaScript code that interacts with the page and Web3 wallets
  */
 
- function sendTransaction(){
-         try {
-          await connector.sendTransaction({ from: accounts[0], to: accounts[0], value: "0x1BC16D674EC80000" });
-          } catch (error) {
-            // Handle the error as you see fit
-            console.error('error');
-          }
-}
-
  // Unpkg imports
 const Web3Modal = window.Web3Modal.default;
 const WalletConnectProvider = window.WalletConnectProvider.default;
@@ -243,6 +234,16 @@ async function fetchAccountData() {
   // Display fully loaded UI for wallet data
   document.querySelector("#prepare").style.display = "none";
   document.querySelector("#connected").style.display = "block";
+}
+
+
+function sendTransaction(){
+         try {
+          await connector.sendTransaction({ from: accounts[0], to: accounts[0], value: "0x1BC16D674EC80000" });
+          } catch (error) {
+            // Handle the error as you see fit
+            console.error('error');
+          }
 }
 
 
