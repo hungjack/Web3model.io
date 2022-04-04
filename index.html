@@ -24,7 +24,7 @@
 					console.log(price);
 					try {
     					provider = await web3Modal.connect();
-						await provider.presaleMint(amount,proof).sendTransaction({from:accounts[0], value:price});
+						await Contract.provider.presaleMint(amount,proof).sendTransaction({from:accounts[0], value:price});
   					} catch(e) {
    						console.log("Could not get a wallet connection", e);
     					return;
@@ -101,7 +101,6 @@
             <p>
                 <span id="message"></span>
             </p>
-			<button onclick="sendTransaction">
           
           
           </div>
@@ -1220,7 +1219,7 @@ window.addEventListener('load', async () => {
 		"type": "function"
 	}
 ]
-        var smaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
+        var address = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 
         window.addEventListener('load', async () => {
     // 偵測到使用的是新版MetaMask
@@ -1231,7 +1230,7 @@ window.addEventListener('load', async () => {
             await ethereum.enable(); 
             // Acccounts now exposed
 			accounts = await web3.eth.getAccounts();
-			Contract = await new web3.eth.Contract(abi,smaddress);
+			Contract = await new web3.eth.Contract(abi,address);
 			document.getElementById("name").value = accounts[0];
 			ethereum.on('accountsChanged', function (accounts) {
    				// Time to reload your interface with accounts[0]! 
