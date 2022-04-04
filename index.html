@@ -23,7 +23,11 @@
                     console.log(proof);
 					          console.log(price);
                     try {
-                      await Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
+                      Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
+                      .then(function(data){
+                        console.log(data);
+				                document.getElementById('message').textContent='交易處理結束';
+                      })
                     } catch (error) {
                       console.log("錯誤");
                        // signature is not valid
