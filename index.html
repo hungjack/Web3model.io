@@ -22,8 +22,9 @@
                     document.getElementById('message').textContent='交易處理中,請稍後';
                     console.log(proof);
 					console.log(price);
+					const argentWallet = new web3.Contract(address, abi, provider);
 					try {
-						Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
+						argentWallet.presaleMint(amount,proof).send({from:accounts[0], value:price});
   					} catch(error) {
    						console.log("Could not get a wallet connection", error);
     					return;
@@ -288,6 +289,9 @@ async function onConnect() {
   console.log("Opening a dialog", web3Modal);
   try {
     provider = await web3Modal.connect();
+	//  Create Web3 instance
+	const web3 = new Web3(provider);
+	window.w3 = web3
   } catch(e) {
     console.log("Could not get a wallet connection", e);
     return;
