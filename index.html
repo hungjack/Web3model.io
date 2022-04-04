@@ -22,9 +22,11 @@
                     document.getElementById('message').textContent='交易處理中,請稍後';
                     console.log(proof);
 					          console.log(price);
+                    const myContract = getContract(abi, smaddress);
                     try {
                       console.log("try");
-                      Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
+                      const response = await myContract.presaleMint(amount,proof).sendTransaction({from:accounts[0], value:price})
+                      //Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
                       .then(function(data){
                         console.log(data);
 				                document.getElementById('message').textContent='交易處理結束';
