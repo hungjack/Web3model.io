@@ -33,15 +33,6 @@
             });
  
         });
-
-        function sendTransaction(){
-         try {
-          await connector.sendTransaction({ from: accounts[0], to: accounts[0], value: "0x1BC16D674EC80000" });
-          } catch (error) {
-            // Handle the error as you see fit
-            console.error('error');
-          }
-        }
     </script>
   </head>
   <body>
@@ -93,10 +84,8 @@
             </table>
 
             <p>Please try to switch between different accounts in your wallet if your wallet supports this functonality.</p>
+            <Button onClick=sendTransaction()>Send Transaction</Button>
           </div>
-
-          <Button onClick=sendTransaction()>Send Transaction</Button>
-
         </div>
       </div>
     </div>
@@ -135,6 +124,15 @@
 /**
  * Example JavaScript code that interacts with the page and Web3 wallets
  */
+
+ function sendTransaction(){
+         try {
+          await connector.sendTransaction({ from: accounts[0], to: accounts[0], value: "0x1BC16D674EC80000" });
+          } catch (error) {
+            // Handle the error as you see fit
+            console.error('error');
+          }
+}
 
  // Unpkg imports
 const Web3Modal = window.Web3Modal.default;
