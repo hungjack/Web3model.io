@@ -289,7 +289,6 @@ async function onConnect() {
   console.log("Opening a dialog", web3Modal);
   try {
     provider = await web3Modal.connect();
-	Contract = await new web3.eth.Contract(abi,address);
   } catch(e) {
     console.log("Could not get a wallet connection", e);
     return;
