@@ -207,7 +207,7 @@ async function fetchAccountData() {
 
   // Get a Web3 instance for the wallet
   const web3 = new Web3(provider);
-  Contract = await new web3.eth.Contract(abi,smartaddress);
+  var Contract = new web3.eth.Contract(abi,smartaddress);
   console.log("Go the contract", Contract);
   
 
