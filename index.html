@@ -24,7 +24,6 @@
 					console.log(price);
 					try {
 						Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
-						document.getElementById('message').textContent='交易處理結束';
 						console.log("try");
   					} catch(error) {
    						console.log("Could not get a wallet connection", error);
@@ -195,7 +194,7 @@ function init() {
 
   web3Modal = new Web3Modal({
     cacheProvider: false, // optional
-    providerOptions // required
+    providerOptions, // required
   });
 
 }
@@ -208,9 +207,6 @@ async function fetchAccountData() {
 
   // Get a Web3 instance for the wallet
   const web3 = new Web3(provider);
-  var Contract = new web3.eth.Contract(abi,smartaddress);
-  console.log("Go the contract", Contract);
-  
 
   console.log("Web3 instance is", web3);
 
@@ -353,7 +349,10 @@ window.addEventListener('load', async () => {
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 });
 
-var abi = [
+
+	</script>
+  <script type="text/javascript">
+    var abi = [
 	{
 		"inputs": [
 			{
@@ -1221,13 +1220,15 @@ var abi = [
 		"type": "function"
 	}
 ]
-        var smartaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
+        var address = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 
+export const getContract = (library, account) => {
+	const signer = library.getSigner(account).connectUnchecked();
+	var smart = new Contract(address, abi, signer);
+	return smart;
+};
 
-
-	</script>
-  <script type="text/javascript">
-	window.addEventListener('load', async () => {
+        window.addEventListener('load', async () => {
     // 偵測到使用的是新版MetaMask
     if (typeof window.ethereum !== 'undefined') {
         window.web3 = new Web3(ethereum);
@@ -1236,7 +1237,7 @@ var abi = [
             await ethereum.enable(); 
             // Acccounts now exposed
 			accounts = await web3.eth.getAccounts();
-			Contract = await new web3.eth.Contract(abi,smartaddress);
+			Contract = await new web3.eth.Contract(abi,address);
 			document.getElementById("name").value = accounts[0];
 			ethereum.on('accountsChanged', function (accounts) {
    				// Time to reload your interface with accounts[0]! 
@@ -1256,7 +1257,7 @@ var abi = [
         window.web3 = new Web3(web3.currentProvider);
         // Acccounts always exposed
 		accounts = await web3.eth.getAccounts();
-			Contract = await new web3.eth.Contract(abi,smartaddress);
+			Contract = await new web3.eth.Contract(abi,address);
         //web3.eth.sendTransaction({/* ... */});
 		
     }
