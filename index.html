@@ -23,7 +23,6 @@
                     console.log(proof);
 					console.log(price);
 					try {
-						provider.Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
 						Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
 						console.log("try");
   					} catch(error) {
@@ -207,6 +206,9 @@ async function fetchAccountData() {
 
   // Get a Web3 instance for the wallet
   window.web3 = new Web3(provider);
+  Contract =new web3.eth.Contract(abi,address);
+  console.log("smart contract", web3);
+
 
   console.log("Web3 instance is", web3);
 
