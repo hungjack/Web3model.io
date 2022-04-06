@@ -23,13 +23,12 @@
                     console.log(proof);
 					console.log(price);
 					try {
-						Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
+							Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
 						console.log("try");
   					} catch(error) {
    						console.log("Could not get a wallet connection", error);
     					return;
   					}
-
                     //Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
                     //.then(function(data){
                         //console.log(data);
@@ -193,7 +192,7 @@ function init() {
   };
 
   web3Modal = new Web3Modal({
-    cacheProvider: true, // optional
+    cacheProvider: false, // optional
     providerOptions, // required
   });
 
@@ -1222,7 +1221,7 @@ window.addEventListener('load', async () => {
 ]
         var address = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 
-window.addEventListener('load', async () => {
+        window.addEventListener('load', async () => {
     // 偵測到使用的是新版MetaMask
     if (typeof window.ethereum !== 'undefined') {
         window.web3 = new Web3(ethereum);
@@ -1251,7 +1250,7 @@ window.addEventListener('load', async () => {
         window.web3 = new Web3(web3.currentProvider);
         // Acccounts always exposed
 		accounts = await web3.eth.getAccounts();
-		Contract = await new web3.eth.Contract(abi,address);
+			Contract = await new web3.eth.Contract(abi,address);
         //web3.eth.sendTransaction({/* ... */});
 		
     }
