@@ -208,9 +208,6 @@ async function fetchAccountData() {
 
   // Get a Web3 instance for the wallet
   const web3 = new Web3(provider);
-  var Contract = new web3.eth.Contract(abi,smartaddress);
-  console.log("Go the contract", Contract);
-  
 
   console.log("Web3 instance is", web3);
 
@@ -348,8 +345,10 @@ async function onDisconnect() {
  * Main entry point.
  */
 window.addEventListener('load', async () => {
-	window.web3 = new Web3(ethereum);
 	init();
+	window.web3 = new Web3(ethereum);
+	var Contract = new web3.eth.Contract(abi,smartaddress);
+  	console.log("Go the contract", Contract);
 	document.querySelector("#btn-connect").addEventListener("click", onConnect);
 	document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 });
