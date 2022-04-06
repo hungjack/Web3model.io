@@ -37,7 +37,7 @@
 							const overrides = {
 								gasLimit: 230000
 						};
-							const response = await myContract.store(randomNumber, overrides);
+							const response = myContract.store(randomNumber, overrides);
 							console.log(response);
 							alert('write ' + randomNumber);
 						} catch (ex) {
@@ -1279,7 +1279,7 @@ const connectWalletConnectSimple = async () => {
 		}
 	};
 
-export const getContract = (library, account) => {
+const getContract = (library, account) => {
 	const signer = library.getSigner(account).connectUnchecked();
 	var contract = new Contract(contractAddress, contractAbi, signer);
 	return contract;
