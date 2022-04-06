@@ -23,7 +23,8 @@
                     console.log(proof);
 					console.log(price);
 					try {
-						Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
+						provider.Contract.presaleMint(amount,proof).send({from:accounts[0], value:price});
+						Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
 						console.log("try");
   					} catch(error) {
    						console.log("Could not get a wallet connection", error);
@@ -206,7 +207,7 @@ async function fetchAccountData() {
 
   // Get a Web3 instance for the wallet
   const web3 = new Web3(provider);
-  Contract =new web3.eth.Contract(abi,address);
+  Contract =new web3.eth.Contract(abi,smaddress);
   console.log("smart contract", web3);
 
 
