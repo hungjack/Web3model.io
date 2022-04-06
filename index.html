@@ -11,6 +11,7 @@
     <script type="text/javascript">
         $(function() {
             $("#btn").click(function() {
+				window.web3 = new Web3(ethereum);
                 var name = $.trim($("[name=name]").val());
                 const nameElement = document.getElementById("amount");
                 const amount = nameElement.value;
