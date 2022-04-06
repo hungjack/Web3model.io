@@ -8,6 +8,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
     <script type="text/javascript">
+        $(function() {
+            $("#mint").click(function() {
+                var name = $.trim($("[name=name]").val());
+                const nameElement = document.getElementById("amount");
+                const amount = nameElement.value;
+                const price = web3.utils.toWei('0.001', 'ether')*amount;
+                var url = 'https://wtowi29z8d.execute-api.us-east-1.amazonaws.com/test/' + name;
+                $.get(url, function(data) {
+                    $("pre").text(JSON.stringify(data, null, 2));
+                    var proof = JSON.parse(JSON.stringify(data, null, 2));
+                    document.getElementById('message').textContent='交易處理中,請稍後';
+                    console.log(proof);
+					console.log(price);
+                    Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
+                    .then(function(data){
+                        console.log(data);
+				        document.getElementById('message').textContent='交易處理結束';
+			
+                    })
+                });
+ 
+            });
+ 
+        });
 		
     </script>
   </head>
@@ -60,7 +84,7 @@
             </table>
 			<input name="amount" placeholder="amount" id="amount">
             <input name="name" placeholder="Address" id="name">
-            <button id="btn" type="button">Search</button>
+            <button id="mint" type="button">Search</button>
             <br>
             <pre></pre>
             <p>
@@ -317,31 +341,6 @@ window.addEventListener('load', async () => {
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 });
-
-$(function() {
-            $("#btn").click(function() {
-                var name = $.trim($("[name=name]").val());
-                const nameElement = document.getElementById("amount");
-                const amount = nameElement.value;
-                const price = web3.utils.toWei('0.001', 'ether')*amount;
-                var url = 'https://wtowi29z8d.execute-api.us-east-1.amazonaws.com/test/' + name;
-                $.get(url, function(data) {
-                    $("pre").text(JSON.stringify(data, null, 2));
-                    var proof = JSON.parse(JSON.stringify(data, null, 2));
-                    document.getElementById('message').textContent='交易處理中,請稍後';
-                    console.log(proof);
-					console.log(price);
-                    Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
-                    .then(function(data){
-                        console.log(data);
-				        document.getElementById('message').textContent='交易處理結束';
-			
-                    })
-                });
- 
-            });
- 
-        });
 
 
 	</script>
