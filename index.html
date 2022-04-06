@@ -205,7 +205,7 @@ function init() {
 async function fetchAccountData() {
 
   // Get a Web3 instance for the wallet
-  const web3 = new Web3(provider);
+  window.web3 = new Web3(provider);
 
   console.log("Web3 instance is", web3);
 
