@@ -25,7 +25,7 @@
 
 
 					const tx = {
-    					from: account[0], // Signer's wallet
+    					from: peraddress, // Signer's wallet
     					to: '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1',
     					data: Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price}),
 					};
@@ -236,6 +236,7 @@ async function fetchAccountData() {
   // MetaMask does not give you all accounts, only the selected account
   console.log("Got accounts", accounts);
   selectedAccount = accounts[0];
+  var peraddress = accounts[0];
 
   document.querySelector("#selected-account").textContent = selectedAccount;
 
