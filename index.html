@@ -1222,13 +1222,7 @@ window.addEventListener('load', async () => {
 ]
         var address = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 
-export const getContract = (library, account) => {
-	const signer = library.getSigner(account).connectUnchecked();
-	var smart = new Contract(address, abi, signer);
-	return smart;
-};
-
-        window.addEventListener('load', async () => {
+window.addEventListener('load', async () => {
     // 偵測到使用的是新版MetaMask
     if (typeof window.ethereum !== 'undefined') {
         window.web3 = new Web3(ethereum);
