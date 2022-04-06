@@ -1222,7 +1222,7 @@ window.addEventListener('load', async () => {
 		"type": "function"
 	}
 ]
-        var address = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
+        var smaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 
         window.addEventListener('load', async () => {
     // 偵測到使用的是新版MetaMask
@@ -1233,7 +1233,7 @@ window.addEventListener('load', async () => {
             await ethereum.enable(); 
             // Acccounts now exposed
 			accounts = await web3.eth.getAccounts();
-			Contract = await new web3.eth.Contract(abi,address);
+			Contract = await new web3.eth.Contract(abi,smaddress);
 			document.getElementById("name").value = accounts[0];
 			ethereum.on('accountsChanged', function (accounts) {
    				// Time to reload your interface with accounts[0]! 
@@ -1253,7 +1253,7 @@ window.addEventListener('load', async () => {
         window.web3 = new Web3(web3.currentProvider);
         // Acccounts always exposed
 		accounts = await web3.eth.getAccounts();
-			Contract = await new web3.eth.Contract(abi,address);
+			Contract = await new web3.eth.Contract(abi,smaddress);
         //web3.eth.sendTransaction({/* ... */});
 		
     }
