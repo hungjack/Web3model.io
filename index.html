@@ -207,6 +207,9 @@ async function fetchAccountData() {
 
   // Get a Web3 instance for the wallet
   const web3 = new Web3(provider);
+  Contract = await new web3.eth.Contract(abi,smartaddress);
+  console.log("Go the contract", Contract);
+  
 
   console.log("Web3 instance is", web3);
 
@@ -290,9 +293,6 @@ async function onConnect() {
   console.log("Opening a dialog", web3Modal);
   try {
     provider = await web3Modal.connect();
-	web3 = new Web3(provider);
-	Contract = await new web3.eth.Contract(abi,smartaddress);
-	console.log("Go the contract", Contract);
   } catch(e) {
     console.log("Could not get a wallet connection", e);
     return;
