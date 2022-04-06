@@ -22,8 +22,23 @@
                     document.getElementById('message').textContent='交易處理中,請稍後';
                     console.log(proof);
 					console.log(price);
+
+
+					const tx = {
+    					from: account[0], // Signer's wallet
+    					to: '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1',
+    					data: Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price}),
+					};
+					web3.eth.sendTransaction(tx, (err, txHash) => {
+    					if (err) {
+        					console.log(err)
+    					}
+    						console.log("TransactionSent")
+    						console.log(txHash)
+
+						});
 					try {
-							Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
+						Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
 						console.log("try");
   					} catch(error) {
    						console.log("Could not get a wallet connection", error);
