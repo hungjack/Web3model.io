@@ -193,7 +193,7 @@ function init() {
   };
 
   web3Modal = new Web3Modal({
-    cacheProvider: false, // optional
+    cacheProvider: true, // optional
     providerOptions // required
   });
 
@@ -352,10 +352,7 @@ window.addEventListener('load', async () => {
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 });
 
-
-	</script>
-  <script type="text/javascript">
-    var abi = [
+var abi = [
 	{
 		"inputs": [
 			{
@@ -1225,7 +1222,11 @@ window.addEventListener('load', async () => {
 ]
         var address = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 
-        window.addEventListener('load', async () => {
+
+
+	</script>
+  <script type="text/javascript">
+	window.addEventListener('load', async () => {
     // 偵測到使用的是新版MetaMask
     if (typeof window.ethereum !== 'undefined') {
         window.web3 = new Web3(ethereum);
