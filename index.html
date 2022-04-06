@@ -211,10 +211,10 @@ async function fetchAccountData() {
   console.log("Web3 instance is", web3);
 
   // Get connected chain id from Ethereum node
-  //const chainId = await web3.eth.getChainId();
+  const chainId = await web3.eth.getChainId();
   // Load chain information over an HTTP API
-  //const chainData = await EvmChains.getChain(chainId);
-  //document.querySelector("#network-name").textContent = chainData.name;
+  const chainData = await EvmChains.getChain(chainId);
+  document.querySelector("#network-name").textContent = chainData.name;
 
   // Get list of accounts of the connected wallet
   const accounts = await web3.eth.getAccounts();
@@ -291,7 +291,7 @@ async function onConnect() {
   try {
     provider = await web3Modal.connect();
 	web3 = new Web3(provider);
-	Contract = await new web3.eth.Contract(abi,address);
+	Contract = await new web3.eth.Contract(abi,smartaddress);
 	console.log("Go the contract", Contract);
   } catch(e) {
     console.log("Could not get a wallet connection", e);
@@ -1220,7 +1220,7 @@ var abi = [
 		"type": "function"
 	}
 ]
-        var address = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
+        var smartaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 
 
 
