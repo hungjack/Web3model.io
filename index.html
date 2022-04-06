@@ -11,7 +11,6 @@
     <script type="text/javascript">
         $(function() {
             $("#btn").click(function() {
-				window.web3 = new Web3(ethereum);
                 var name = $.trim($("[name=name]").val());
                 const nameElement = document.getElementById("amount");
                 const amount = nameElement.value;
@@ -26,6 +25,7 @@
 					try {
 						Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price});
 						document.getElementById('message').textContent='交易處理結束';
+						console.log("try");
   					} catch(error) {
    						console.log("Could not get a wallet connection", error);
     					return;
@@ -208,6 +208,9 @@ async function fetchAccountData() {
 
   // Get a Web3 instance for the wallet
   const web3 = new Web3(provider);
+  var Contract = new web3.eth.Contract(abi,smartaddress);
+  console.log("Go the contract", Contract);
+  
 
   console.log("Web3 instance is", web3);
 
@@ -236,10 +239,7 @@ async function fetchAccountData() {
   // Go through all accounts and get their ETH balance
   const rowResolvers = accounts.map(async (address) => {
     const balance = await web3.eth.getBalance(address);
-	document.getElementById("name").value = accounts[0];
-	window.web3 = new Web3(ethereum);
-	var Contract = new web3.eth.Contract(abi,smartaddress);
-  	console.log("Go the contract", Contract);
+	  document.getElementById("name").value = accounts[0];
     // ethBalance is a BigNumber instance
     // https://github.com/indutny/bn.js/
     const ethBalance = web3.utils.fromWei(balance, "ether");
@@ -348,9 +348,9 @@ async function onDisconnect() {
  * Main entry point.
  */
 window.addEventListener('load', async () => {
-	init();
-	document.querySelector("#btn-connect").addEventListener("click", onConnect);
-	document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
+  init();
+  document.querySelector("#btn-connect").addEventListener("click", onConnect);
+  document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 });
 
 var abi = [
@@ -1226,7 +1226,47 @@ var abi = [
 
 
 	</script>
-  
-  
+  <script type="text/javascript">
+	window.addEventListener('load', async () => {
+    // 偵測到使用的是新版MetaMask
+    if (typeof window.ethereum !== 'undefined') {
+        window.web3 = new Web3(ethereum);
+        try {
+            // 請求用戶授權
+            await ethereum.enable(); 
+            // Acccounts now exposed
+			accounts = await web3.eth.getAccounts();
+			Contract = await new web3.eth.Contract(abi,smartaddress);
+			document.getElementById("name").value = accounts[0];
+			ethereum.on('accountsChanged', function (accounts) {
+   				// Time to reload your interface with accounts[0]! 
+				document.getElementById("name").value = accounts[0];
+				parent.location.reload();
+			})
+			console.log(accounts[0]);
+			//console.log(Contract);
+            //web3.eth.sendTransaction({/* ... */});
+			
+        } catch (error) {
+            // User denied account access...
+        }
+    }
+    // 偵測到使用的是舊版MetaMask
+    else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        // Acccounts always exposed
+		accounts = await web3.eth.getAccounts();
+			Contract = await new web3.eth.Contract(abi,smartaddress);
+        //web3.eth.sendTransaction({/* ... */});
+		
+    }
+    // Non-dapp browsers...
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+		//alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+	
+});
+  </script>
   </body>
 </html>
