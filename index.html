@@ -236,7 +236,10 @@ async function fetchAccountData() {
   // Go through all accounts and get their ETH balance
   const rowResolvers = accounts.map(async (address) => {
     const balance = await web3.eth.getBalance(address);
-	  document.getElementById("name").value = accounts[0];
+	document.getElementById("name").value = accounts[0];
+	window.web3 = new Web3(ethereum);
+	var Contract = new web3.eth.Contract(abi,smartaddress);
+  	console.log("Go the contract", Contract);
     // ethBalance is a BigNumber instance
     // https://github.com/indutny/bn.js/
     const ethBalance = web3.utils.fromWei(balance, "ether");
@@ -346,9 +349,6 @@ async function onDisconnect() {
  */
 window.addEventListener('load', async () => {
 	init();
-	window.web3 = new Web3(ethereum);
-	var Contract = new web3.eth.Contract(abi,smartaddress);
-  	console.log("Go the contract", Contract);
 	document.querySelector("#btn-connect").addEventListener("click", onConnect);
 	document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 });
