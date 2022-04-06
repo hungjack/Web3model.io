@@ -348,9 +348,10 @@ async function onDisconnect() {
  * Main entry point.
  */
 window.addEventListener('load', async () => {
-  init();
-  document.querySelector("#btn-connect").addEventListener("click", onConnect);
-  document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
+	window.web3 = new Web3(ethereum);
+	init();
+	document.querySelector("#btn-connect").addEventListener("click", onConnect);
+	document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 });
 
 var abi = [
@@ -1226,5 +1227,7 @@ var abi = [
 
 
 	</script>
+  
+  
   </body>
 </html>
