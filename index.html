@@ -1235,7 +1235,7 @@ var abi = [
             await ethereum.enable(); 
             // Acccounts now exposed
 			accounts = await web3.eth.getAccounts();
-			Contract = await new web3.eth.Contract(abi,address);
+			Contract = await new web3.eth.Contract(abi,smartaddress);
 			document.getElementById("name").value = accounts[0];
 			ethereum.on('accountsChanged', function (accounts) {
    				// Time to reload your interface with accounts[0]! 
