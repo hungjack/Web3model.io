@@ -22,12 +22,16 @@
                     document.getElementById('message').textContent='交易處理中,請稍後';
                     console.log(proof);
 					console.log(price);
+					try{
                     Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
                     .then(function(data){
                         console.log(data);
 				        document.getElementById('message').textContent='交易處理結束';
-			
                     })
+					}catch(e){
+						document.getElementById('message').textContent='交易失敗';
+					}
+			
                 });
  
             });
