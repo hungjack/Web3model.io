@@ -82,6 +82,7 @@ async function fetchAccountData() {
 
   // MetaMask does not give you all accounts, only the selected account
   console.log("Got accounts", accounts);
+  document.getElementById("name").value = accounts[0];
 
   // Display fully loaded UI for wallet data
   document.querySelector("#prepare").style.display = "none";
