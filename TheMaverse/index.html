@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>The Maverse</title>
+	<link rel="icon" href="images/logo.png">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link media="all" rel="stylesheet" href="css/main.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-3.3.1.min.js" defer><\/script>')</script>
+	<script src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+	<script src="js/jquery.main.js" defer></script>
+	<script type="text/javascript">
+        $(function() {
+            $("#mint").click(function() {
+                var name = $.trim($("[name=name]").val());
+                const nameElement = document.getElementById("amount");
+                const amount = nameElement.value;
+                const price = web3.utils.toWei('0.001', 'ether')*amount;
+                var url = 'https://wtowi29z8d.execute-api.us-east-1.amazonaws.com/test/' + name;
+                $.get(url, function(data) {
+                    $("pre").text(JSON.stringify(data, null, 2));
+                    var proof = JSON.parse(JSON.stringify(data, null, 2));
+                    document.getElementById('message').textContent='交易處理中,請稍後';
+                    console.log(proof);
+					console.log(price);
+					try{
+                    Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
+                    .then(function(data){
+                        console.log(data);
+				        document.getElementById('message').textContent='交易處理結束';
+                    })
+					}catch(e){
+						document.getElementById('message').textContent='交易失敗';
+					}
+			
+                });
+ 
+            });
+ 
+        });
+		
+    </script>
+</head>
+<body>
+	<div id="wrapper">
+		<header class="header">
+			<div class="container">
+				<div class="header-holder">
+					<strong class="logo">
+						<a href="#"></a>
+					</strong>
+					<div class="nav-drop">
+						<div class="nav-area">
+							<div class="nav-wrap">
+								<ul class="menu">
+									<li><a href="#about" class="smooth">About</a></li>
+									<li><a href="#collection" class="smooth">Collection</a></li>
+									<li><a href="#roadmap" class="smooth">Roadmap</a></li>
+									<li><a href="#team" class="smooth">Team</a></li>
+									<div id="prepare"><li><a id="btn-connect" class="smooth">Wallet<i class="fa-solid fa-wallet"></i></a></li></div>
+									<div id="connected" style="display: none"><li><a id="btn-disconnect" class="smooth">disconnect</a></li></div>
+								</ul>
+								<ul class="social-networks">
+									<li><a href="https://twitter.com/TheMaverse"><i class="icon-twitter"></i></a></li>
+									<li><a href="https://www.instagram.com/themaverse.io/"><i class="icon-instagram"></i></a></li>
+									<li><a href="https://opensea.io/The_Maverse"><i class="icon-social"></i></a></li>
+									<li><a href="https://discord.gg/BcxRGmJEh4"><i class="icon-discord"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="#" class="menu-opener"></a>
+		</header>
+		<main class="main">
+			<section class="visual-section" id="about">
+				<div class="container">
+					<div class="visual-holder">
+						<div class="visual-image-holder">
+							<div class="visual-image">
+								<img src="images/image.png" alt="image-description">
+							</div>
+						</div>
+						<div class="visual-caption">
+							<h1>Intro To The Project</h1>
+							<p>The Maverse is driven by the community and our NFT holders are considered as shareholders of the project which will receive a dividend from our future game income in each quarter. </p>
+							<p>We are the first project using the Free-To-Earn (F2E) business model and we will launch a mahjong game on both IOS and Android platforms. This game will be available to play for everyone even if you do not own our NFTs.</p>
+							<span class="btn-holder">
+								<input name="amount" placeholder="amount" id="amount">
+								<button id="mint" class="btn btn-primary">Mint (Coming Soon)</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="collection-area" id="collection">
+				<div class="container">
+					<h2>NFT Collections</h2>
+					<div class="collection-row collection-nft-slider">
+						<div class="collection-col slide">
+							<div class="collection-block dragon">
+								<div class="image-holder">
+									<img src="images/image01.png" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="heading">Azure Dragon</strong>
+
+								</div>
+							</div>
+						</div>
+						<div class="collection-col slide">
+							<div class="collection-block tiger">
+								<div class="image-holder">
+									<img src="images/fulllogo.png" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="heading">White Tiger</strong>
+
+								</div>
+							</div>
+						</div>
+						<div class="collection-col slide">
+							<div class="collection-block vermillion">
+								<div class="image-holder">
+									<img src="images/fulllogo.png" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="heading">Red Vermillion</strong>
+
+								</div>
+							</div>
+						</div>
+						<div class="collection-col slide">
+							<div class="collection-block tortoise">
+								<div class="image-holder">
+									<img src="images/fulllogo.png" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="heading">Black Tortoise</strong>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="collection-slider-area">
+					<div class="collection-slider slider-right">
+						<div class="mask">
+							<div class="line">
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image01.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image02.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image03.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image04.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image05.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image06.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image01.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image02.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image03.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image04.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image05.png" alt="image-description">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="collection-slider slider-left">
+						<div class="mask">
+							<div class="line">
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image07.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image08.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image09.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image10.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image11.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image12.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image07.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image08.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image09.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image10.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image11.png" alt="image-description">
+									</div>
+								</div>
+								<div class="collection-slide">
+									<div class="image-holder">
+										<img src="images/image12.png" alt="image-description">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="benefit-section">
+				<div class="container">
+					<div class="wrap">
+						<div class="text-block">
+							<h2>NFT Benifits</h2>
+							<p>By holding our NFTs, you will receive several exclusive benefits. For example, join the holder exclusive club, FREE merchandise, receive dividend, review project cash flow, participate in project development, free token airdrops, and more!</p>
+							<ul class="btns-list">
+								<li><a href="https://whitepapereng.themaverse.io/" class="btn btn-primary">White Paper (English)</a></li>
+								<li><a href="https://whitepaperchn.themaverse.io/" class="btn btn-primary">White Paper (中文版)</a></li>
+							</ul>
+						</div>
+						<div class="image-holder">
+							<img src="images/image13.png" alt="image-description">
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="token-info-section">
+				<div class="container">
+					<div class="text-area">
+						<h2>Tokenomics</h2>
+						<p>Each ERC-20 token launched by The Maverse will be backed up by Bitcoin, we aim to reduce the risk for both NFT and token holders. The Maverse promises to purchase Bitcoin with funds from NFT sales and future game income. </p>
+						<p>All players, no matter if they have NFTs, can exchange their game coins with The Maverse bank for ERC-20 tokens. Tokens will be available to trade on secondary markets such as Binance, Uniswap in the future.</p>
+					</div>
+					<div class="token-info-row">
+						<div class="token-info-col">
+							<div class="token-info-block bank">
+								<span class="text">The <br>Maverse Bank</span>
+							</div>
+							<span class="deposit-text">Deposit BTC</span>
+							<div class="token-info-block">
+								<span class="text">In-App <br>Purchase</span>
+								<span class="money-line-box"></span>
+								<span class="money-text">Money</span>
+							</div>
+						</div>
+						<div class="token-info-col">
+							<div class="token-info-block">
+								<span class="text">Players</span>
+								<ul class="token-info-list">
+									<li>
+										<span class="sub-text right">Token</span>
+									</li>
+									<li>
+										<span class="sub-text left">Game Coins</span>
+									</li>
+								</ul>
+							</div>
+							<div class="token-info-block">
+								<span class="text">Others</span>
+								<span class="line"></span>
+								<span class="left-arrow"></span>
+							</div>
+							<div class="token-info-block">
+								<span class="text">In-App <br>Purchase</span>
+								<span class="left-arrow"></span>
+							</div>
+						</div>
+						<div class="token-info-col">
+							<div class="token-info-block">
+								<span class="text">The Maverse</span>
+								<ul class="token-info-list">
+									<li>
+										<span class="sub-text left">Game Coins</span>
+									</li>
+									<li>
+										<span class="sub-text right">Play</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="roadmap-section" id="roadmap">
+				<div class="container">
+					<h2>Roadmap</h2>
+					<div class="roadmap-list-holder">
+						<div class="line-holder">
+							<span class="line"></span>
+							<span class="arrow-left"><i class="icon-left"></i></span>
+							<span class="arrow-right"><i class="icon-right"></i></span>
+						</div>
+						<ul class="roadmap-list">
+							<li>
+								<span class="circle"></span>
+								<span class="btn-holder">
+									<span class="title btn">Phase 1</span>
+								</span>
+								<ul class="text-list">
+									<li>Drop Azure Dragon Collection</li>
+									<li>Launch Staking System</li>
+									<li>Establish Holders Club</li>
+								</ul>
+							</li>
+							<li>
+								<span class="circle"></span>
+								<span class="btn-holder">
+									<span class="title btn">Phase 2</span>
+								</span>
+								<ul class="text-list">
+									<li>Drop White Tiger Collection</li>
+									<li>Launch Merchandise</li>
+									<li>Launch Beta Game</li>
+								</ul>
+							</li>
+							<li>
+								<span class="circle"></span>
+								<span class="btn-holder">
+									<span class="title btn">Phase 3</span>
+								</span>
+								<ul class="text-list">
+									<li>Drop Vermillion Bird Collection</li>
+									<li>Launch The Maverse Game</li>
+									<li>Aggressive Marketing</li>
+								</ul>
+							</li>
+							<li>
+								<span class="circle"></span>
+								<span class="btn-holder">
+									<span class="title btn">Phase 4</span>
+								</span>
+								<ul class="text-list">
+									<li>Drop Black Tortoise Collection</li>
+									<li>Announce Next Roadmap</li>
+									<li>Building Finance System</li>
+									<li>Pay Dividend</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="team-section" id="team">
+				<div class="container">
+					<h2>Team</h2>
+					<div class="team-row team-slider">
+						<div class="team-col">
+							<div class="team-block">
+								<div class="image-holder member01">
+									<img src="images/image14.png" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="name">Tycoon</strong>
+									<span class="desination">Founder</span>
+									<ul class="info-list">
+										<li>Entrepreneur</li>
+										<li>Missouri S&T Computer Science Major</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="team-col">
+							<div class="team-block">
+								<div class="image-holder member02">
+									<img src="images/image15.png" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="name">Hanse</strong>
+									<span class="desination">Head of Partnership</span>
+									<ul class="info-list">
+										<li>Investor</li>
+										<li>Have Strong Human Relationship</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="team-col">
+							<div class="team-block">
+								<div class="image-holder member03">
+									<img src="images/image16.png" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="name">Eric</strong>
+									<span class="desination">Business Assistance</span>
+									<ul class="info-list">
+										<li>Entrepreneur</li>
+										<li>Many Years Of Experience In Business</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="team-col">
+							<div class="team-block">
+								<div class="image-holder member04">
+									<img src="images/image17.png" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="name">Jack</strong>
+									<span class="desination">Tech Wiz</span>
+									<ul class="info-list">
+										<li>Master of Blockchain</li>
+										<li>Finance Expert</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="team-col">
+							<div class="team-block">
+								<div class="image-holder member05">
+									<img src="images/image18.png" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="name">Jafa</strong>
+									<span class="desination">Art Lead</span>
+									<ul class="info-list">
+										<li>Full Time Artist With Many Years Experience</li>
+										<li>-Collaborate With Game Companies</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="team-col">
+							<div class="team-block">
+								<div class="image-holder member06">
+									<img src="images/image19.jpg" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="name">Patrick Taylor</strong>
+									<span class="desination">Cyber Security Advisor</span>
+									<ul class="info-list">
+										<li>Networkinh & Cyber Security</li>
+										<li>Professor at Computer Science</li>
+										<li>Department Missouri S&T</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="team-col">
+							<div class="team-block">
+								<div class="image-holder member07">
+									<img src="images/image20.jpg" alt="image-description">
+								</div>
+								<div class="description">
+									<strong class="name">George Markowsk</strong>
+									<span class="desination">Business Advisor</span>
+									<ul class="info-list">
+										<li>Harvard University Phd</li>
+										<li>Professor at Computer Science</li>
+										<li>Department Missouri S&T</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-holder">
+					<div class="footer-text-area">
+						<strong class="f-logo">
+							<a href="#">Disclaimer</a>
+						</strong>
+						<p>Advisors will only provide advising service to the project and they are not officers of the company, therefore,not responsible for the decisions.</p>
+					</div>
+					<div class="footer-nav-area">
+						<h3>User Links</h3>
+						<ul class="footer-nav">
+							<li><a href="#">About</a></li>
+							<li><a href="#">Collection</a></li>
+							<li><a href="#">Roadmap</a></li>
+							<li><a href="#">Team</a></li>
+						</ul>
+					</div>
+					<div class="subscribe-area">
+						<h3>Subscribe To Newletter</h3>
+						<form action="#" class="subscribe-field-area">
+							<div class="subscribe-field">
+								<input type="email" class="field" placeholder="Email">
+							</div>
+							<button type="submit" class="btn btn-primary">Subscribe</button>
+						</form>
+						<ul class="social-networks">
+							<li><a href="https://twitter.com/TheMaverse"><i class="icon-twitter"></i></a></li>
+							<li><a href="https://www.instagram.com/themaverse.io/"><i class="icon-instagram"></i></a></li>
+							<li><a href="https://opensea.io/The_Maverse"><i class="icon-social"></i></a></li>
+							<li><a href="https://discord.gg/BcxRGmJEh4"><i class="icon-discord"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="copyright-area">
+				<div class="container">
+					<span class="copyright">&copy;The Maverse. All Right Reserved</span>
+				</div>
+			</div>
+		</footer>
+	</div>
+	
+	<script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+
+	<script src="js/mint.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+// Colors
+// Color calculator - http://razorjam.github.io/sasscolourfunctioncalculator/
+// Color names - http://name-of-color.com/
+
+$gray: #999;
+$black: #000;
+$white: #fff;
+$light-blue: #39f;
+$primary: #d4332b;
+
+$arial-font: 'Arial', 'Helvetica', sans-serif;
+$quicksand-font: 'Quicksand', $arial-font;
+$made-gentle-font: 'made-gentle', $arial-font;
+$base-font-sans-serif: $quicksand-font;
+
+// This is the default html and body font-size for the base rem value.
+$rem-base: 16px;
+
+// Body
+$base-text-color: #3a3a3a;
+$base-background-color: $white !default;
+$font-size-base: 18px !default;
+$line-height-base: 1.66667 !default;
+$base-font-family: $base-font-sans-serif !default;
+
+$vertical-rhythm: ($line-height-base * 1em);
+
+$base-min-width: 320px;
+
+// Links
+$base-link-color: $light-blue;
+
+// Buttons 
+$btn-color: $white !default;
+$btn-background: $black !default;
+$btn-padding: 0.4em 0.7em !default;
+$btn-font-size: inherit !default;
+
+// Forms
+$form-element-padding: $btn-padding !default;
+$form-element-border-color: $gray !default;
+$form-element-focus-border-color: $black !default;
+$placeholder-color: $gray !default;
+
+// Headers
+$h1-font-size: 30px !default;
+$h2-font-size: 27px !default;
+$h3-font-size: 24px !default;
+$h4-font-size: 21px !default;
+$h5-font-size: 17px !default;
+$h6-font-size: 15px !default;
+
+$headings-font-family: $made-gentle-font;
+$headings-font-weight: 400;
+$headings-color: inherit !default;
+

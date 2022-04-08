@@ -1,0 +1,41 @@
+@font-face {
+	@include fontface(icomoon, icomoon, 400, normal);
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icomoon' !important;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-right:before {
+	content: "\e904";
+}
+
+.icon-left:before {
+	content: "\e905";
+}
+
+.icon-social:before {
+	content: "\e900";
+}
+
+.icon-instagram:before {
+	content: "\e901";
+}
+
+.icon-twitter:before {
+	content: "\e902";
+}
+
+.icon-discord:before {
+	content: "\e903";
+}
