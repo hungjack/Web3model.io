@@ -169,7 +169,7 @@ async function onDisconnect() {
 }
 
 window.addEventListener('load', async () => {
-	//init();
+	init();
 	document.querySelector("#btn-connect").addEventListener("click", onConnect);
 	document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
     // 偵測到使用的是新版MetaMask
