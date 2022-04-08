@@ -169,9 +169,6 @@ async function onDisconnect() {
 }
 
 window.addEventListener('load', async () => {
-	init();
-	document.querySelector("#btn-connect").addEventListener("click", onConnect);
-	document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
     // 偵測到使用的是新版MetaMask
     if (typeof window.ethereum !== 'undefined') {
         window.web3 = new Web3(ethereum);
@@ -181,6 +178,9 @@ window.addEventListener('load', async () => {
             // Acccounts now exposed
 			accounts = await web3.eth.getAccounts();
 			Contract = await new web3.eth.Contract(abi,smaddress);
+			init();
+			document.querySelector("#btn-connect").addEventListener("click", onConnect);
+			document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 			document.getElementById("name").value = accounts[0];
 			ethereum.on('accountsChanged', function (accounts) {
    				// Time to reload your interface with accounts[0]! 
