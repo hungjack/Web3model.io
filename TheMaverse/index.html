@@ -16,7 +16,7 @@
 	<script type="text/javascript">
         $(function() {
             $("#mint").click(function() {
-                //var name = $.trim($("[name=name]").val());
+                var name = $.trim($("[name=name]").val());
                 const nameElement = document.getElementById("amount");
                 const amount = nameElement.value;
                 const price = web3.utils.toWei('0.001', 'ether')*amount;
