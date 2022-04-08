@@ -67,9 +67,11 @@ async function fetchAccountData() {
   // Get a Web3 instance for the wallet
   await provider.enable(); 
   const web3 = new Web3(provider);
+  const Contract = new web3.eth.Contract(abi,smaddress);
 
 
   console.log("Web3 instance is", web3);
+  console.log("Web3 smart contract", Contract);
 
   // Get connected chain id from Ethereum node
   //const chainId = await web3.eth.getChainId();
@@ -166,14 +168,48 @@ async function onDisconnect() {
   document.querySelector("#connected").style.display = "none";
 }
 
-
-/**
- * Main entry point.
- */
 window.addEventListener('load', async () => {
-  init();
-  document.querySelector("#btn-connect").addEventListener("click", onConnect);
-  document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
+	init();
+	document.querySelector("#btn-connect").addEventListener("click", onConnect);
+	document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
+    // 偵測到使用的是新版MetaMask
+    if (typeof window.ethereum !== 'undefined') {
+        window.web3 = new Web3(ethereum);
+        try {
+            // 請求用戶授權
+            await ethereum.enable(); 
+            // Acccounts now exposed
+			accounts = await web3.eth.getAccounts();
+			Contract = await new web3.eth.Contract(abi,smaddress);
+			document.getElementById("name").value = accounts[0];
+			ethereum.on('accountsChanged', function (accounts) {
+   				// Time to reload your interface with accounts[0]! 
+				document.getElementById("name").value = accounts[0];
+				parent.location.reload();
+			})
+			console.log(accounts[0]);
+			//console.log(Contract);
+            //web3.eth.sendTransaction({/* ... */});
+			
+        } catch (error) {
+            // User denied account access...
+        }
+    }
+    // 偵測到使用的是舊版MetaMask
+    else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        // Acccounts always exposed
+		accounts = await web3.eth.getAccounts();
+			Contract = await new web3.eth.Contract(abi,smaddress);
+        //web3.eth.sendTransaction({/* ... */});
+		
+    }
+    // Non-dapp browsers...
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+		//alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+	
 });
 
     var abi = [
@@ -1046,43 +1082,4 @@ window.addEventListener('load', async () => {
 ]
         var smaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 
-        window.addEventListener('load', async () => {
-    // 偵測到使用的是新版MetaMask
-    if (typeof window.ethereum !== 'undefined') {
-        window.web3 = new Web3(ethereum);
-        try {
-            // 請求用戶授權
-            await ethereum.enable(); 
-            // Acccounts now exposed
-			accounts = await web3.eth.getAccounts();
-			Contract = await new web3.eth.Contract(abi,smaddress);
-			document.getElementById("name").value = accounts[0];
-			ethereum.on('accountsChanged', function (accounts) {
-   				// Time to reload your interface with accounts[0]! 
-				document.getElementById("name").value = accounts[0];
-				parent.location.reload();
-			})
-			console.log(accounts[0]);
-			//console.log(Contract);
-            //web3.eth.sendTransaction({/* ... */});
-			
-        } catch (error) {
-            // User denied account access...
-        }
-    }
-    // 偵測到使用的是舊版MetaMask
-    else if (window.web3) {
-        window.web3 = new Web3(web3.currentProvider);
-        // Acccounts always exposed
-		accounts = await web3.eth.getAccounts();
-			Contract = await new web3.eth.Contract(abi,smaddress);
-        //web3.eth.sendTransaction({/* ... */});
-		
-    }
-    // Non-dapp browsers...
-    else {
-        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
-		//alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
-    }
-	
-});
+
