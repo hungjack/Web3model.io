@@ -212,7 +212,7 @@ window.addEventListener('load', async () => {
 	
 });
 
-    var abi = [
+var abi = [
 	{
 		"inputs": [
 			{
@@ -1081,5 +1081,3 @@ window.addEventListener('load', async () => {
 	}
 ]
         var smaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
-
-
