@@ -72,7 +72,7 @@ async function fetchAccountData() {
 
 
   console.log("Web3 instance is", web3);
-  console.log("Web3 instance is", Contract);
+  console.log("smart contract", Contract);
 
   // Get connected chain id from Ethereum node
   //const chainId = await web3.eth.getChainId();
