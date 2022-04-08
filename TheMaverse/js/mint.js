@@ -137,11 +137,6 @@ async function onConnect() {
     fetchAccountData();
   });
 
-  // Subscribe to networkId change
-  provider.on("networkChanged", (networkId) => {
-    fetchAccountData();
-  });
-
   await refreshAccountData();
 }
 
