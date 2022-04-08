@@ -66,10 +66,13 @@ async function fetchAccountData() {
 
   // Get a Web3 instance for the wallet
   await provider.enable(); 
-  const web3 = new Web3(provider);
+  window.web3 = new Web3(provider);
+  //window.web3 = new Web3(ethereum);
+  const Contract = new web3.eth.Contract(abi,smaddress);
 
 
   console.log("Web3 instance is", web3);
+  console.log("Web3 instance is", Contract);
 
   // Get connected chain id from Ethereum node
   //const chainId = await web3.eth.getChainId();
