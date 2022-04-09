@@ -130,7 +130,6 @@ async function onConnect() {
 
   // Subscribe to chainId change
   provider.on("chainChanged", (chainId) => {
-    console.log("Get chainID", chainId);
     fetchAccountData();
   });
 
@@ -161,6 +160,12 @@ async function onDisconnect() {
   // Set the UI back to the initial state
   document.querySelector("#prepare").style.display = "block";
   document.querySelector("#connected").style.display = "none";
+}
+
+async function getAccount() {
+  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+  const account = accounts[0];
+  showAccount.innerHTML = account;
 }
 
 
