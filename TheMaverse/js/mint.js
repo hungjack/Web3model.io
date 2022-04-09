@@ -78,6 +78,12 @@ async function fetchAccountData() {
   // MetaMask does not give you all accounts, only the selected account
   console.log("Got accounts", accounts);
   document.getElementById("name").value = accounts[0];
+  document.getElementById("name").value = accounts[0];
+  ethereum.on('accountsChanged', function (accounts) {
+       // Time to reload your interface with accounts[0]! 
+    document.getElementById("name").value = accounts[0];
+    parent.location.reload();
+  })
 
   // Display fully loaded UI for wallet data
   document.querySelector("#prepare").style.display = "none";
