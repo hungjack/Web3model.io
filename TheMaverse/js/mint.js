@@ -57,7 +57,7 @@ function init() {
 async function fetchAccountData() {
 
   // Get a Web3 instance for the wallet
-  await ethereum.enable(); 
+  //await ethereum.enable(); 
   await provider.enable(); 
   window.web3 = new Web3(provider);
   //window.web3 = new Web3(ethereum);
