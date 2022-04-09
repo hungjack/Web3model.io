@@ -130,6 +130,7 @@ async function onConnect() {
 
   // Subscribe to chainId change
   provider.on("chainChanged", (chainId) => {
+    console.log("Get chainID", chainId);
     fetchAccountData();
   });
 
