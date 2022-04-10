@@ -893,6 +893,7 @@ var abi = [
 					//web3.eth.sendTransaction({/* ... */});
 					
 				} catch (error) {
+					showAccount.innerHTML = "Please connect wallet";
 					// User denied account access...
 				}
 			}
