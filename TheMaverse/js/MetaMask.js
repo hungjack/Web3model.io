@@ -890,7 +890,7 @@ var abi = [
 
 					ethereumButton.addEventListener('click', () => {
 						//Will Start the metamask extension
-						const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+						const accounts = ethereum.request({ method: 'eth_requestAccounts' });
 						const account = accounts[0];
 						showAccount.innerHTML = account;
 					});
