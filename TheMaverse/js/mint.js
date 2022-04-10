@@ -167,9 +167,7 @@ async function onDisconnect() {
  * Main entry point.
  */
 window.addEventListener('load', async () => {
-  init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
-  document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 });
 
   

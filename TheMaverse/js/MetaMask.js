@@ -868,7 +868,7 @@ var abi = [
 ]
         var smaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 
-        window.addEventListener('load', async () => {
+        async function onConnect() {
 			// 偵測到使用的是新版MetaMask
 			if (typeof window.ethereum !== 'undefined') {
 				window.web3 = new Web3(ethereum);
@@ -883,8 +883,6 @@ var abi = [
 						   // Time to reload your interface with accounts[0]! 
 						document.getElementById("name").value = accounts[0];
 						parent.location.reload();
-					document.querySelector("#prepare").style.display = "none";
-					document.querySelector("#connected").style.display = "block";
 					})
 					console.log(accounts[0]);
 					//console.log(Contract);
@@ -909,4 +907,9 @@ var abi = [
 				//alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
 			}
 	
-	});
+	}
+
+	window.addEventListener('load', async () => {
+		document.querySelector("#btn-connect").addEventListener("click", onConnect);
+		//document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
+	  });
