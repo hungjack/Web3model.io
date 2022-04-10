@@ -894,7 +894,7 @@ var abi = [
 						if(chainId == 1){
 							showchainId.innerHTML = "連接主網成功";
 						}else{
-							showchainId.innerHTML = "請連接主網"
+							showchainId.innerHTML = "請連接主網";
 						}
 						// Handle the new chain.
 						// Correctly handling chain changes can be complicated.
