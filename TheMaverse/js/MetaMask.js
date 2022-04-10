@@ -892,9 +892,9 @@ var abi = [
 					console.log(chainId);
 					ethereum.on('chainChanged',(chainId) => {
 						if(chainId == 1){
-							showchainId.innerHTML = "連接主網成功";
+							showchainId.innerHTML = "Successfully connected to the main network";
 						}else{
-							showchainId.innerHTML = "請連接主網";
+							showchainId.innerHTML = "Please connect to mainnet";
 						}
 						// Handle the new chain.
 						// Correctly handling chain changes can be complicated.
