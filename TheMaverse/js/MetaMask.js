@@ -867,6 +867,8 @@ var abi = [
 	}
 ]
         var smaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
+
+		const ethereumButton = document.querySelector('.enableEthereumButton');
 		const showAccount = document.querySelector('.showAccount');
 
         async function onConnect() {
