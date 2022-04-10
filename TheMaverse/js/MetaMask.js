@@ -887,13 +887,7 @@ var abi = [
 						document.getElementById("name").value = accounts[0];
 						parent.location.reload();
 					})
-
-					ethereumButton.addEventListener('click', () => {
-						//Will Start the metamask extension
-						const accounts = ethereum.request({ method: 'eth_requestAccounts' });
-						const account = accounts[0];
-						showAccount.innerHTML = account;
-					});
+					showAccount.innerHTML = accounts[0];
 					console.log(accounts[0]);
 					//console.log(Contract);
 					//web3.eth.sendTransaction({/* ... */});
