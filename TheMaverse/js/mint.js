@@ -80,6 +80,12 @@ async function fetchAccountData() {
   console.log("Got accounts", accounts);
   document.getElementById("name").value = accounts[0];
   
+  provider.on('accountsChanged', function (accounts) {
+    // Time to reload your interface with accounts[0]! 
+  document.getElementById("name").value = accounts[0];
+ parent.location.reload();
+})
+  
   // Display fully loaded UI for wallet data
   document.querySelector("#prepare").style.display = "none";
   document.querySelector("#connected").style.display = "block";
