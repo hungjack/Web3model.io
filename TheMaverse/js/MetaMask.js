@@ -870,8 +870,9 @@ var abi = [
 		
 		const ethereumButton = document.querySelector('.enableEthereumButton');
 		const showAccount = document.querySelector('.showAccount');
-
-        async function onConnect() {
+		const showchainId = document.querySelector('.showchainId');
+        
+		async function onConnect() {
 			// 偵測到使用的是新版MetaMask
 			if (typeof window.ethereum !== 'undefined') {
 				window.web3 = new Web3(ethereum);
@@ -887,9 +888,14 @@ var abi = [
 						document.getElementById("name").value = accounts[0];
 						parent.location.reload();
 					});
-					const chainId = await web3.eth.getChainId();
+					chainId = await web3.eth.getChainId();
 					console.log(chainId);
 					ethereum.on('chainChanged',(chainId) => {
+						if(chainId == 1){
+							showchainId.innerHTML = "連接主網成功";
+						}else{
+							showchainId.innerHTML = "請連接主網"
+						}
 						// Handle the new chain.
 						// Correctly handling chain changes can be complicated.
 						// We recommend reloading the page unless you have good reason not to.
