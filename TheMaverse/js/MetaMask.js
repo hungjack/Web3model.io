@@ -876,6 +876,7 @@ var abi = [
 					// 請求用戶授權
 					await ethereum.enable(); 
 					// Acccounts now exposed
+					provider = await web3Modal.connect();
 					accounts = await web3.eth.getAccounts();
 					Contract = await new web3.eth.Contract(abi,smaddress);
 					document.getElementById("name").value = accounts[0];
