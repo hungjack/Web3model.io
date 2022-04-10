@@ -13,38 +13,7 @@
 	<script src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
 	<script src="js/jquery.main.js" defer></script>
-	<script type="text/javascript">
-        $(function() {
-            $("#mint").click(function() {
-                var name = $.trim($("[name=name]").val());
-                const nameElement = document.getElementById("amount");
-                const amount = nameElement.value;
-                const price = web3.utils.toWei('0.001', 'ether')*amount;
-                var url = 'https://wtowi29z8d.execute-api.us-east-1.amazonaws.com/test/' + name;
-                $.get(url, function(data) {
-                    $("pre").text(JSON.stringify(data, null, 2));
-                    var proof = JSON.parse(JSON.stringify(data, null, 2));
-                    //document.getElementById('message').textContent='交易處理中,請稍後';
-                    console.log(proof);
-					console.log(price);
-					try{
-					console.log("try");
-                    Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
-                    .then(function(data){
-                        console.log(data);
-				        //document.getElementById('message').textContent='交易處理結束';
-                    })
-					}catch(e){
-						//document.getElementById('message').textContent='交易失敗';
-					}
-			
-                });
- 
-            });
- 
-        });
-		
-    </script>
+	<script src ="js/mint.js"></script>
 </head>
 <body>
 	<div id="wrapper">
