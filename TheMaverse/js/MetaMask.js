@@ -884,6 +884,8 @@ var abi = [
 						   // Time to reload your interface with accounts[0]! 
 						document.getElementById("name").value = accounts[0];
 						parent.location.reload();
+					document.querySelector("#prepare").style.display = "none";
+					document.querySelector("#connected").style.display = "block";
 					})
 					console.log(accounts[0]);
 					//console.log(Contract);
