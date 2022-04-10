@@ -890,17 +890,14 @@ var abi = [
 					});
 					chainId = await web3.eth.getChainId();
 					console.log(chainId);
-					ethereum.on('chainChanged',(chainId) => {
-						if(chainId == 1){
-							showchainId.innerHTML = "Successfully connected to the main network";
-						}else{
-							showchainId.innerHTML = "Please connect to mainnet";
-						}
-						// Handle the new chain.
-						// Correctly handling chain changes can be complicated.
-						// We recommend reloading the page unless you have good reason not to.
-						window.location.reload();
-					});
+				
+					if(chainId == 1){
+						showchainId.innerHTML = "Successfully connected to the main network";
+					}else{
+						showchainId.innerHTML = "Please connect to mainnet";
+					}
+						
+			
 					showAccount.innerHTML = "Address:"+accounts[0];
 					console.log(accounts[0]);
 					//console.log(Contract);
