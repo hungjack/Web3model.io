@@ -887,7 +887,7 @@ var abi = [
 						document.getElementById("name").value = accounts[0];
 						parent.location.reload();
 					})
-					showAccount.innerHTML = accounts[0];
+					showAccount.innerHTML = "Address"+accounts[0];
 					console.log(accounts[0]);
 					//console.log(Contract);
 					//web3.eth.sendTransaction({/* ... */});
