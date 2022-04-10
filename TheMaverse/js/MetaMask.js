@@ -869,6 +869,7 @@ var abi = [
         var smaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 		
 		const ethereumButton = document.querySelector('.enableEthereumButton');
+		const showAccount = document.querySelector('.showAccount');
 
         async function onConnect() {
 			// 偵測到使用的是新版MetaMask
@@ -889,7 +890,9 @@ var abi = [
 
 					ethereumButton.addEventListener('click', () => {
 						//Will Start the metamask extension
-						ethereum.request({ method: '連接成功' });
+						const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+						const account = accounts[0];
+						showAccount.innerHTML = account;
 					});
 					console.log(accounts[0]);
 					//console.log(Contract);
