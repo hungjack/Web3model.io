@@ -115,9 +115,25 @@ async function refreshAccountData() {
  */
 async function onConnect() {
 
-  console.log("Opening a dialog", web3Modal);
+  console.log("Opening a dialog", ethereum);
+  window.web3 = new Web3(ethereum);
   try {
-    provider = await web3Modal.connect();
+    // 請求用戶授權
+    await ethereum.enable(); 
+    // Acccounts now exposed
+    accounts = await web3.eth.getAccounts();
+    Contract = await new web3.eth.Contract(abi,smaddress);
+    document.getElementById("name").value = accounts[0];
+    ethereum.on('accountsChanged', function (accounts) {
+         // Time to reload your interface with accounts[0]! 
+      document.getElementById("name").value = accounts[0];
+      parent.location.reload();
+    })
+    console.log(accounts[0]);
+    //console.log(Contract);
+    //web3.eth.sendTransaction({/* ... */});
+    
+    provider = await ethereum.connect();
   } catch(e) {
     console.log("Could not get a wallet connection", e);
     return;

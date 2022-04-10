@@ -868,7 +868,7 @@ var abi = [
 ]
         var smaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
 
-        async function onConnect() {
+        window.addEventListener('load', async () => {
 			// 偵測到使用的是新版MetaMask
 			if (typeof window.ethereum !== 'undefined') {
 				window.web3 = new Web3(ethereum);
@@ -907,9 +907,4 @@ var abi = [
 				//alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
 			}
 	
-		}
-
-		window.addEventListener('load', async () => {
-			document.querySelector("#btn-connect").addEventListener("click", onConnect);
-		  });
-		  
+	});
