@@ -886,7 +886,38 @@ var abi = [
 						   // Time to reload your interface with accounts[0]! 
 						document.getElementById("name").value = accounts[0];
 						parent.location.reload();
-					})
+					});
+					ethereum.on('chainChanged', (chainId) => {
+						// Handle the new chain.
+						// Correctly handling chain changes can be complicated.
+						// We recommend reloading the page unless you have good reason not to.
+						switch (chainId) {
+							case "1":
+							  window.alert('切換到the ropsten test network再操作！');
+							  console.log('This is mainnet');
+							  return;
+							case "2":
+							  window.alert('切換到the ropsten test network再操作！');
+							  console.log('This is the deprecated Morden test network.');
+							  return;
+							case "3":
+							  console.log('This is the ropsten test network.');
+							  break;
+							case "4":
+							  window.alert('切換到the ropsten test network再操作！');
+							  console.log('This is the Rinkeby test network.');
+							  return;
+							case "42":
+							  window.alert('切換到the ropsten test network再操作！');
+							  console.log('This is the Kovan test network.');
+							  return;
+							default:
+							  window.alert('切換到the ropsten test network再操作！');
+							  console.log('This is an unknown network.');
+							  return;
+						  }
+						window.location.reload();
+					  });
 					showAccount.innerHTML = "Address:"+accounts[0];
 					console.log(accounts[0]);
 					//console.log(Contract);
