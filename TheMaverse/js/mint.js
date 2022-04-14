@@ -8,14 +8,13 @@ $(function() {
       $.get(url, function(data) {
           $("pre").text(JSON.stringify(data, null, 2));
           var proof = JSON.parse(JSON.stringify(data, null, 2));
-        if(proof.length == null){
-          swal ( "error" ,  "non-whitelist!" ,  "error" );
-          return;
+      if(proof.length == null){
+          return swal ( "error" ,  "non-whitelist!" ,  "error" );
       }else{
           //document.getElementById('message').textContent='交易處理中,請稍後';
           console.log(proof);
           console.log(price);
-      try{
+        try{
           Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
           .then(function(data){
               console.log(data);
