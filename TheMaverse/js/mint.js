@@ -11,7 +11,7 @@ $(function() {
         if(proof.length == null){
           swal ( "error" ,  "non-whitelist!" ,  "error" );
           return;
-        }
+      }else{
           //document.getElementById('message').textContent='交易處理中,請稍後';
           console.log(proof);
           console.log(price);
@@ -26,8 +26,9 @@ $(function() {
             swal ( "Error" ,  "transaction failed!" ,  "error" );
             //document.getElementById('message').textContent='交易失敗';
         }
-
-      });
+      }
+     
+    });
       
   });
 
