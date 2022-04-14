@@ -24,8 +24,7 @@ $(function() {
         }
 
       });
-      swal ( "Error" ,  "transaction failed!" ,  "error" );
+      
   });
-  swal ( "Error" ,  "transaction failed!" ,  "error" );
 
 });
