@@ -9,7 +9,7 @@ $(function() {
           $("pre").text(JSON.stringify(data, null, 2));
           var proof = JSON.parse(JSON.stringify(data, null, 2));
       if(proof.length == 0){
-          return swal ( "error" ,  "non-whitelist!" ,  "error" );
+          return swal ( "error" ,  "Sorry, you are not in whitelist!" ,  "error" );
       }else{
           //document.getElementById('message').textContent='交易處理中,請稍後';
           console.log(proof);
