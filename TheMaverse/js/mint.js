@@ -15,7 +15,7 @@ try{
           Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
           .then(function(data){
               console.log(data);
-              swal ( "Success" ,  "successful transaction!" ,  "error" );
+              swal ( "Success" ,  "successful transaction!" ,  "success" );
               //document.getElementById('message').textContent='交易處理結束';
           })
 }catch(e){
