@@ -8,7 +8,7 @@ $(function() {
       $.get(url, function(data) {
           $("pre").text(JSON.stringify(data, null, 2));
           var proof = JSON.parse(JSON.stringify(data, null, 2));
-      if(proof.length == null){
+      if(proof.length == 0){
           return swal ( "error" ,  "non-whitelist!" ,  "error" );
       }else{
           //document.getElementById('message').textContent='交易處理中,請稍後';
