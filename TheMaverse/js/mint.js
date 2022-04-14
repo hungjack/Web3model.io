@@ -12,14 +12,15 @@ $(function() {
           console.log(proof);
 console.log(price);
 try{
-console.log("try");
           Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
           .then(function(data){
               console.log(data);
-      //document.getElementById('message').textContent='交易處理結束';
+              swal ( "Success" ,  "successful transaction!" ,  "error" );
+              //document.getElementById('message').textContent='交易處理結束';
           })
 }catch(e){
-  //document.getElementById('message').textContent='交易失敗';
+    swal ( "Error" ,  "transaction failed!" ,  "error" );
+    //document.getElementById('message').textContent='交易失敗';
 }
 
       });
