@@ -14,7 +14,7 @@ $(function() {
           //document.getElementById('message').textContent='交易處理中,請稍後';
           console.log(proof);
           console.log(price);
-          Swal({
+          Swal.fire({
             position: 'top-end',
             icon: 'Success',
             title: 'On the way of processing, please hold for a moment!',
