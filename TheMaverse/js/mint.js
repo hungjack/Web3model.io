@@ -14,13 +14,6 @@ $(function() {
           //document.getElementById('message').textContent='交易處理中,請稍後';
           console.log(proof);
           console.log(price);
-          Swal.fire({
-            position: 'top-end',
-            icon: 'Success',
-            title: 'On the way of processing, please hold for a moment!',
-            showConfirmButton: false,
-            timer: 1500
-          });
         try{
           Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
           .then(function(data){
