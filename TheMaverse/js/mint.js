@@ -46,6 +46,9 @@ $(function() {
     if (!isNaN(currentVal)) {
       // Increment
       $('input[name=' + fieldName + ']').val(currentVal + 1);
+      if(currentVal > 3){
+        $('input[name=' + fieldName + ']').val(3);
+      }
     } else {
       // Otherwise put a 0 there
       $('input[name=' + fieldName + ']').val(0);
