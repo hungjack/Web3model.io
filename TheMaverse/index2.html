@@ -65,10 +65,8 @@
 								<span class="showAccount"></span>
 								<span class="showchainId"></span>
 								<br>
-								<input name="amount" placeholder="amount" id="amount" type="number" oninput="if(value>3)value=3;if(value.length>1)value=value.slice(0,1);if(value<=0)value=1"
-								pattern="[0-9]*">
 								<input type='button' value='-' class='qtyminus' field='quantity'>
-								<input type='text' name='quantity' value='0' class='qty'>
+								<input type='text' name='quantity' value='0'  id="amount">
 								<input type='button' value='+' class='qtyplus' field='quantity'>
 								<button id="mint" class="btn btn-primary">Mint (Coming Soon)</button>
 							</span>
