@@ -34,14 +34,14 @@ $(function() {
 });
 
 function del(){
-  var num=parseInt($('#quantity').text())-1;
+  var num=parseInt($('#mint').number())-1;
   if(num<1){
-    $('#quantity').text(1);
+    $('#mint').number(1);
     }else{
-    $('#quantity').text(num);
+    $('#mint').number(num);
   }
   }
 function add(){
-  var num=parseInt($('#quantity').text())+1;
-  $('#quantity').text(num);
+  var num=parseInt($('#mint').number())+1;
+  $('#mint').number(num);
   }
