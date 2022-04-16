@@ -32,3 +32,16 @@ $(function() {
   });
 
 });
+
+function del(){
+  var num=parseInt($('#quantity').text())-1;
+  if(num<1){
+    $('#quantity').text(1);
+    }else{
+    $('#quantity').text(num);
+  }
+  }
+function add(){
+  var num=parseInt($('#quantity').text())+1;
+  $('#quantity').text(num);
+  }
