@@ -75,16 +75,3 @@ $(function() {
     }
   });
 });
-
-
-
-var ua = navigator.userAgent;
-var android = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1; // android
-var iOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); // ios
-if(android==true){
-document.getElementById('resoult').innerHTML = '您的裝置是 Android';
-}else if(iOS==true){
-document.getElementById('resoult').innerHTML = '您的裝置是 iOS';
-}else{
-document.getElementById('resoult').innerHTML = '您目前非行動裝置';
-}
