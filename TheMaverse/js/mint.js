@@ -59,11 +59,11 @@ $(function() {
       if(currentVal >= 3){
         $('input[name=' + fieldName + ']').val(3);
       }
-      showPrice.innerHTML = "Total Price"+amount*0.001+"ETH";
     } else {
       // Otherwise put a 0 there
       $('input[name=' + fieldName + ']').val(0);
     }
+    setTotal();
   });
   // This button will decrement the value till 0
   $(".qtyminus").click(function(e) {
@@ -80,12 +80,17 @@ $(function() {
       if(currentVal <= 1){
         $('input[name=' + fieldName + ']').val(1);
       }
-      showPrice.innerHTML = "Total Price"+amount*0.001+"ETH";
     } else {
       // Otherwise put a 0 there
       $('input[name=' + fieldName + ']').val(0);
     }
+    setTotal();
   });
+  //計算操作
+  function setTotal(){
+  $("#showPrice").html((parseInt($('input[name=' + fieldName + ']').val())*0.001).toFixed(2));//toFixed()是保留小數點的函式很實用哦
+  }
+  //初始化
+  setTotal();
 });
 
-const showPrice = document.querySelector('.showPrice');
