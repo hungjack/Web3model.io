@@ -33,9 +33,9 @@ $(function() {
 					}
       }
      
-    }).error(function() {
-      swal ( "Error" ,  "Please connect to wallet!" ,  "error" );
-    })
+    }).fail(function() {
+      swal ( "Error" ,  "Please connect to wallet!" ,  "error" ); // Error logic
+    });
       
   });
 
