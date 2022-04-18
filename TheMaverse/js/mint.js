@@ -5,7 +5,6 @@ $(function() {
       const amount = nameElement.value;
       //const price = web3.utils.toWei('0.001', 'ether')*amount;
       var url = 'https://wtowi29z8d.execute-api.us-east-1.amazonaws.com/test/' + name;
-      if(name == 0) return swal ( "Error" ,  "Please connect to wallet!" ,  "error" );
       $.get(url, function(data) {
           $("pre").text(JSON.stringify(data, null, 2));
           var proof = JSON.parse(JSON.stringify(data, null, 2));
@@ -34,6 +33,8 @@ $(function() {
 					}
       }
      
+    }).error(function() {
+      swal ( "Error" ,  "Please connect to wallet!" ,  "error" );
     });
       
   });
