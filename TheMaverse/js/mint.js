@@ -64,7 +64,7 @@ $(function() {
       $('input[name=' + fieldName + ']').val(0);
     }
     setTotal();
-  });
+  })
   // This button will decrement the value till 0
   $(".qtyminus").click(function(e) {
     // Stop acting like a button
@@ -85,10 +85,10 @@ $(function() {
       $('input[name=' + fieldName + ']').val(0);
     }
     setTotal();
-  });
+  })
   //計算操作
   function setTotal(){
-  $("#showPrice").html((parseInt($('input[name=' + fieldName + ']').val())*0.001).toFixed(2));//toFixed()是保留小數點的函式很實用哦
+  $("#showPrice").html((parseInt($('input[name=' + fieldName + ']').val())*0.001).toFixed(3));//toFixed()是保留小數點的函式很實用哦
   }
   //初始化
   setTotal();
