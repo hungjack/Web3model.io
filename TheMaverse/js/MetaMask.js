@@ -919,21 +919,6 @@ var abi = [
 				});
 				
 			}
-			// 偵測到使用的是舊版MetaMask
-			if (window.web3) {
-				window.web3 = new Web3(web3.currentProvider);
-				// Acccounts always exposed
-				accounts = await web3.eth.getAccounts();
-				Contract = await new web3.eth.Contract(abi,smaddress);
-				//web3.eth.sendTransaction({/* ... */});
-				
-			}
-			// Non-dapp browsers...
-			else {
-				console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
-				//alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
-			}
-	
 	}
 
 	window.addEventListener('load', async () => {
