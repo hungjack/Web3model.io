@@ -3,19 +3,19 @@ $(function() {
       var name = $.trim($("[name=name]").val());
       const nameElement = document.getElementById("amount");
       const amount = nameElement.value;
-      const price = web3.utils.toWei('0.001', 'ether')*amount;
+      //const price = web3.utils.toWei('0.001', 'ether')*amount;
       var url = 'https://wtowi29z8d.execute-api.us-east-1.amazonaws.com/test/' + name;
       $.get(url, function(data) {
           $("pre").text(JSON.stringify(data, null, 2));
           var proof = JSON.parse(JSON.stringify(data, null, 2));
-      if(web3.utils.toWei =='undefined') return swal ( "warning" ,  "Please connect to Wallet!" ,  "warning" );
+      if(accounts[0] == 0) return swal ( "Error" ,  "Please connect to wallet!" ,  "error" );
       if(proof.length == 0){
           return swal ( "warning" ,  "Sorry, you are not in whitelist!" ,  "warning" );
       }else{
           //document.getElementById('message').textContent='交易處理中,請稍後';
           console.log(proof);
           console.log(price);
-
+          const price = web3.utils.toWei('0.001', 'ether')*amount;
           if(chainId == 4){//連接主網
             try{
               Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
