@@ -911,7 +911,7 @@ var abi = [
 					// User denied account access...
 				}
 			}else{
-				return swal ( "info" ,  "Please Go to MetaMask Mobile!" ,  "info" ,{button: "go to browser"} )
+				return swal ( "info" ,  "You need to use MetaMask Browser to be able to mint." ,  "info" ,{button: "go to browser"} )
 				.then(function () {
 					window.location.href = "https://metamask.app.link/dapp/hungjack.github.io/Web3model.io/TheMaverse/index2.html"
 				});
