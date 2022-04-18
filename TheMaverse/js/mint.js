@@ -11,10 +11,10 @@ $(function() {
       if(proof.length == 0){
           return swal ( "warning" ,  "Sorry, you are not in whitelist!" ,  "warning" );
       }else{
+          const price = web3.utils.toWei('0.001', 'ether')*amount;
           //document.getElementById('message').textContent='交易處理中,請稍後';
           console.log(proof);
           console.log(price);
-          const price = web3.utils.toWei('0.001', 'ether')*amount;
           if(chainId == 4){//連接主網
             try{
               Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
