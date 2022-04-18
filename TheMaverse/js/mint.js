@@ -88,7 +88,7 @@ $(function() {
   })
   //計算操作
   function setTotal(){
-  $("#showPrice").html((parseInt($('input[name=' + fieldName + ']').val())*0.001).toFixed(3));//toFixed()是保留小數點的函式很實用哦
+  $("#showPrice").html("Total Price:"+(parseInt($('input[name=' + fieldName + ']').val())*0.001).toFixed(3)+"ETH");//toFixed()是保留小數點的函式很實用哦
   }
   //初始化
   setTotal();
