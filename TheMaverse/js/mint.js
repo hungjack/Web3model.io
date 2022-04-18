@@ -14,17 +14,23 @@ $(function() {
           //document.getElementById('message').textContent='交易處理中,請稍後';
           console.log(proof);
           console.log(price);
-        try{
-          Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
-          .then(function(data){
-              console.log(data);
-              swal ( "Success" ,  "successful transaction!" ,  "success" );
-              //document.getElementById('message').textContent='交易處理結束';
-          })
-        }catch(e){
-            swal ( "Error" ,  "transaction failed!" ,  "error" );
-            //document.getElementById('message').textContent='交易失敗';
-        }
+
+          if(chainId == 1){
+            try{
+              Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
+              .then(function(data){
+                  console.log(data);
+                  swal ( "Success" ,  "successful transaction!" ,  "success" );
+                  //document.getElementById('message').textContent='交易處理結束';
+              })
+            }catch(e){
+                swal ( "Error" ,  "transaction failed!" ,  "error" );
+                //document.getElementById('message').textContent='交易失敗';
+            }
+					}else{
+            swal ( "Error" ,  "Please connect to main!" ,  "error" );
+						//showchainId.innerHTML = "Please connect to mainnet";
+					}
       }
      
     });
