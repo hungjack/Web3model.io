@@ -35,7 +35,7 @@ $(function() {
      
     }).error(function() {
       swal ( "Error" ,  "Please connect to wallet!" ,  "error" );
-    });
+    })
       
   });
 
