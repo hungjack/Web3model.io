@@ -86,12 +86,12 @@ $(function() {
   });
 });
 
-
+const showPrice = document.querySelector('.showPrice');
 function TotalPrice() {
    
   const nameElement = document.getElementById("amount");
   const amount = nameElement.value;
-   
-  document.getElementById('showPrice').innerHTML = "Total Price"+amount*0.001+"ETH";
+  showPrice.innerHTML = "Total Price"+amount*0.001+"ETH";
+  console.log("TotalPrice");
  
 }
