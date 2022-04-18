@@ -8,6 +8,7 @@ $(function() {
       $.get(url, function(data) {
           $("pre").text(JSON.stringify(data, null, 2));
           var proof = JSON.parse(JSON.stringify(data, null, 2));
+      if(price =='') return swal ( "warning" ,  "Please connect to Wallet!!" ,  "warning" );
       if(proof.length == 0){
           return swal ( "warning" ,  "Sorry, you are not in whitelist!" ,  "warning" );
       }else{
@@ -15,7 +16,7 @@ $(function() {
           console.log(proof);
           console.log(price);
 
-          if(chainId == 1){
+          if(chainId == 4){//連接主網
             try{
               Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
               .then(function(data){
@@ -27,7 +28,7 @@ $(function() {
                 swal ( "Error" ,  "transaction failed!" ,  "error" );
                 //document.getElementById('message').textContent='交易失敗';
             }
-					}else{
+					}else{//非主網
             swal ( "Error" ,  "Please connect to main!" ,  "error" );
 						//showchainId.innerHTML = "Please connect to mainnet";
 					}
