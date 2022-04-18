@@ -898,7 +898,7 @@ var abi = [
 						// We recommend reloading the page unless you have good reason not to.
 						window.location.reload();
 					});
-					if(chainId == 1){
+					if(chainId == 1){//連接主網:1 測試網:4
 						showchainId.innerHTML = "Successfully connected to the main network";
 					}else{
 						showchainId.innerHTML = "Please connect to main network";
