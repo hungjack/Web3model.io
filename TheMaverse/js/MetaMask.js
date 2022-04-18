@@ -932,3 +932,7 @@ var abi = [
 		document.querySelector("#btn-connect").addEventListener("click", onConnect);
 		//document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 	  });
+
+
+	
+	  
