@@ -910,13 +910,15 @@ var abi = [
 					showAccount.innerHTML = "Please connect wallet";
 					// User denied account access...
 				}
+			}else{
+				showAccount.innerHTML = "Please Go to MetaMask Mobile";
 			}
 			// 偵測到使用的是舊版MetaMask
-			else if (window.web3) {
+			if (window.web3) {
 				window.web3 = new Web3(web3.currentProvider);
 				// Acccounts always exposed
 				accounts = await web3.eth.getAccounts();
-					Contract = await new web3.eth.Contract(abi,smaddress);
+				Contract = await new web3.eth.Contract(abi,smaddress);
 				//web3.eth.sendTransaction({/* ... */});
 				
 			}
