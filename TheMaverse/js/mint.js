@@ -8,7 +8,7 @@ $(function() {
       $.get(url, function(data) {
           $("pre").text(JSON.stringify(data, null, 2));
           var proof = JSON.parse(JSON.stringify(data, null, 2));
-      if(price =='') return swal ( "warning" ,  "Please connect to Wallet!!" ,  "warning" );
+      if(accounts[0] =='') return swal ( "warning" ,  "Please connect to Wallet!!" ,  "warning" );
       if(proof.length == 0){
           return swal ( "warning" ,  "Sorry, you are not in whitelist!" ,  "warning" );
       }else{
