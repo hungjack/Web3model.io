@@ -911,10 +911,11 @@ var abi = [
 					// User denied account access...
 				}
 			}else{
-				return swal ( "warning" ,  "Sorry, Please Go to MetaMask Mobile!" ,  "warning" )
+				return swal ( "info" ,  "Please Go to MetaMask Mobile!" ,  "info" ,{button: "go to browser"} )
 				.then(function () {
 					window.location.href = "https://metamask.app.link/dapp/hungjack.github.io/Web3model.io/TheMaverse/index2.html"
 				});
+				
 			}
 			// 偵測到使用的是舊版MetaMask
 			if (window.web3) {
