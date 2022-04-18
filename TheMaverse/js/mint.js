@@ -85,3 +85,13 @@ $(function() {
     }
   });
 });
+
+
+function TotalPrice() {
+   
+  const nameElement = document.getElementById("amount");
+  const amount = nameElement.value;
+   
+  document.getElementById('showPrice').innerHTML = "Total Price"+amount*0.001+"ETH";
+ 
+}

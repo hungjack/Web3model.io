@@ -871,7 +871,7 @@ var abi = [
 		const ethereumButton = document.querySelector('.enableEthereumButton');
 		const showAccount = document.querySelector('.showAccount');
 		const showchainId = document.querySelector('.showchainId');
-		const showPrice = document.querySelector('.showPrice');
+		
 
         
 		async function onConnect() {
@@ -900,7 +900,6 @@ var abi = [
 					});
 					if(chainId == 1){
 						showchainId.innerHTML = "Successfully connected to the main network";
-						showPrice.innerHTML = "Total Price"+0.001*amount+"ETH";
 					}else{
 						showchainId.innerHTML = "Please connect to main network";
 					}
