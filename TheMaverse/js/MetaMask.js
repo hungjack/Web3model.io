@@ -871,7 +871,7 @@ var abi = [
 		const ethereumButton = document.querySelector('.enableEthereumButton');
 		const showAccount = document.querySelector('.showAccount');
 		const showchainId = document.querySelector('.showchainId');
-		
+		const showPrice = document.querySelector('.showPrice');
 
         
 		async function onConnect() {
@@ -904,6 +904,7 @@ var abi = [
 						showchainId.innerHTML = "Please connect to main network";
 					}
 					showAccount.innerHTML = "Address:"+accounts[0];
+					showPrice.innerHTML = "Total Price:0.001ETH";
 					console.log(accounts[0]);
 					//console.log(Contract);
 					//web3.eth.sendTransaction({/* ... */});
