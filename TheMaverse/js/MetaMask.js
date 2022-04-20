@@ -879,6 +879,18 @@ var abi = [
 			if (typeof window.ethereum !== 'undefined') {
 				window.web3 = new Web3(ethereum);
 				try {
+					// 請求用戶授權
+					ethereum.request({ method: "eth_requestAccounts" })
+					.catch((error) => {
+						if (error.code === 4001) {
+						  // EIP-1193 userRejectedRequest error
+								// The request was rejected by the user
+							showAccount.innerHTML = "Please connect wallet";
+						  	console.log('Please connect wallet');
+						} else {
+						  console.error(error);
+						}
+					  });
 					// Acccounts now exposed
 					accounts = await web3.eth.getAccounts();
 					Contract = await new web3.eth.Contract(abi,smaddress);
