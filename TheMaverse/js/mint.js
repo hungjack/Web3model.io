@@ -23,6 +23,17 @@ $(function() {
                   swal ( "Success" ,  "successful transaction!" ,  "success" );
                   //document.getElementById('message').textContent='交易處理結束';
               })
+              .catch((error) => {
+                if (error.code === 4001) {
+                  // EIP-1193 userRejectedRequest error
+                  // The request was rejected by the user
+                  swal ( "Error" ,  "User denied transaction signature!" ,  "error" );
+                  console.log('User denied transaction signature.');
+                } else {
+                  swal ( "Error" ,  "transaction failed!" ,  "error" );
+                  console.error(error);
+                }
+              });
             }catch(e){
                 swal ( "Error" ,  "transaction failed!" ,  "error" );
                 //document.getElementById('message').textContent='交易失敗';
