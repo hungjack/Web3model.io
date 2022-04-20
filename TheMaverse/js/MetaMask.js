@@ -880,7 +880,17 @@ var abi = [
 				window.web3 = new Web3(ethereum);
 				try {
 					// 請求用戶授權
-					await ethereum.enable(); 
+					ethereum.request({ method: "eth_requestAccounts" })
+					.catch((error) => {
+						if (error.code === 4001) {
+						  // EIP-1193 userRejectedRequest error
+								// The request was rejected by the user
+							showAccount.innerHTML = "MetaMask Tx Signature: User denied transaction signature.";
+						  	console.log('MetaMask Tx Signature: User denied transaction signature.');
+						} else {
+						  console.error(error);
+						}
+					  });
 					// Acccounts now exposed
 					accounts = await web3.eth.getAccounts();
 					Contract = await new web3.eth.Contract(abi,smaddress);
