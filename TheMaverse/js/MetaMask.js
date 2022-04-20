@@ -880,7 +880,7 @@ var abi = [
 				window.web3 = new Web3(ethereum);
 				try {
 					// 請求用戶授權
-					await ethereum.request({ method: 'eth_requestAccounts' }); 
+					await ethereum.enable(); 
 					// Acccounts now exposed
 					accounts = await web3.eth.getAccounts();
 					Contract = await new web3.eth.Contract(abi,smaddress);
