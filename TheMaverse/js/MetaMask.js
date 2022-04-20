@@ -881,6 +881,7 @@ var abi = [
 				try {
 					// 請求用戶授權
 					ethereum.request({ method: "eth_requestAccounts" })
+					.then(handleAccountsChanged)
 					.catch((error) => {
 						if (error.code === 4001) {
 						  // EIP-1193 userRejectedRequest error
