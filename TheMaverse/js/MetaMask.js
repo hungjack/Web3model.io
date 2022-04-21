@@ -881,6 +881,7 @@ var abi = [
 				try {
 					// 請求用戶授權
 					await ethereum.enable(); 
+					await ethereum.request({ method: 'eth_requestAccounts' });
 					// Acccounts now exposed
 					accounts = await web3.eth.getAccounts();
 					Contract = await new web3.eth.Contract(abi,smaddress);
