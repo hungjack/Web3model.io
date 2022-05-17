@@ -899,7 +899,7 @@ var abi = [
 						// We recommend reloading the page unless you have good reason not to.
 						window.location.reload();
 					});
-					if(chainId == 1){//連接主網:1 測試網:4
+					if(chainId == 4){//連接主網:1 測試網:4
 						document.querySelector("#btn-connect").style.display = "none";
 						document.querySelector(".mint").style.display = "block";
 						showchainId.innerHTML = "Successfully connected to the main network";
