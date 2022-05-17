@@ -900,6 +900,8 @@ var abi = [
 						window.location.reload();
 					});
 					if(chainId == 1){//連接主網:1 測試網:4
+						document.querySelector("#btn-connect").style.display = "none";
+						document.querySelector(".mint").style.display = "block";
 						showchainId.innerHTML = "Successfully connected to the main network";
 					}else{
 						showchainId.innerHTML = "Please connect to main network";
