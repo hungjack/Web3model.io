@@ -174,7 +174,7 @@ var abi = [
 		"inputs": [
 			{
 				"indexed": false,
-				"internalType": "enum Jackman.Status",
+				"internalType": "enum AzureDragon.Status",
 				"name": "status",
 				"type": "uint8"
 			}
@@ -209,7 +209,7 @@ var abi = [
 	},
 	{
 		"inputs": [],
-		"name": "PRICE",
+		"name": "PresalePRICE",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -222,12 +222,12 @@ var abi = [
 	},
 	{
 		"inputs": [],
-		"name": "_isBlindBoxOpened",
+		"name": "PublicPRICE",
 		"outputs": [
 			{
-				"internalType": "bool",
+				"internalType": "uint256",
 				"name": "",
-				"type": "bool"
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -640,19 +640,6 @@ var abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "bool",
-				"name": "_statu",
-				"type": "bool"
-			}
-		],
-		"name": "setBlindBoxOpened",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "uint256",
 				"name": "quantity",
 				"type": "uint256"
@@ -679,7 +666,7 @@ var abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "enum Jackman.Status",
+				"internalType": "enum AzureDragon.Status",
 				"name": "_status",
 				"type": "uint8"
 			}
@@ -694,7 +681,7 @@ var abi = [
 		"name": "status",
 		"outputs": [
 			{
-				"internalType": "enum Jackman.Status",
+				"internalType": "enum AzureDragon.Status",
 				"name": "",
 				"type": "uint8"
 			}
@@ -866,7 +853,7 @@ var abi = [
 		"type": "function"
 	}
 ]
-        var smaddress = '0xFa936E506F7BA958C4ce0A849c0C1Ed4425e20B1';
+        var smaddress = '0xd18aDf64A378638ffDE4584EAdfe2C85A94fdAD1';
 		
 		const ethereumButton = document.querySelector('.enableEthereumButton');
 		const showAccount = document.querySelector('.showAccount');
@@ -899,7 +886,7 @@ var abi = [
 						// We recommend reloading the page unless you have good reason not to.
 						window.location.reload();
 					});
-					if(chainId == 4){//連接主網:1 測試網:4
+					if(chainId == 1){//連接主網:1 測試網:4
 						document.querySelector("#btn-connect").style.display = "none";
 						document.querySelector(".mint").style.display = "block";
 						showchainId.innerHTML = "Successfully connected to the main network";
@@ -907,7 +894,7 @@ var abi = [
 						showchainId.innerHTML = "Please connect to main network";
 					}
 					showAccount.innerHTML = "Address:"+accounts[0];
-					showPrice.innerHTML = "Total Price:0.001ETH";
+					showPrice.innerHTML = "Total Price:0.065ETH";
 					console.log(accounts[0]);
 					//console.log(Contract);
 					//web3.eth.sendTransaction({/* ... */});
