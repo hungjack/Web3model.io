@@ -67,8 +67,8 @@ $(function() {
     if (!isNaN(currentVal)) {
       // Increment
       $('input[name=' + fieldName + ']').val(currentVal + 1);
-      if(currentVal >= 3){
-        $('input[name=' + fieldName + ']').val(3);
+      if(currentVal >= 10){
+        $('input[name=' + fieldName + ']').val(10);
       }
     } else {
       // Otherwise put a 0 there
@@ -99,7 +99,7 @@ $(function() {
   })
   //計算操作
   function setTotal(){
-  $("#showPrice").html("Total Price:"+(parseInt($('input[name=' + fieldName + ']').val())*0.001).toFixed(3)+"ETH");//toFixed()是保留小數點的函式很實用哦
+  $("#showPrice").html("Total Price:"+(parseInt($('input[name=' + fieldName + ']').val())*0.065).toFixed(3)+"ETH");//toFixed()是保留小數點的函式很實用哦
   }
   //初始化
   setTotal();
