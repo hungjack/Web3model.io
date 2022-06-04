@@ -906,7 +906,7 @@ var abi = [
 			}else{
 				return swal ( "info" ,  "You need to use MetaMask Browser to be able to mint." ,  "info" ,{button: "go to browser"} )
 				.then(function () {
-					window.location.href = "https://metamask.app.link/dapp/hungjack.github.io/Web3model.io/TheMaverse/index2.html"
+					window.location.href = "https://metamask.app.link/dapp/themaverse.io"
 				});
 				
 			}
