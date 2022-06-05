@@ -17,7 +17,7 @@ $(function() {
           console.log(price);
           if(chainId == 1){//連接主網:1 測試網:4
             try{
-              Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price})
+              Contract.methods.presaleMint(amount,proof).send({from:accounts[0], value:price, gasPrice: '10000000000000',gas: '1000000'})
               .then(function(data){
                   console.log(data);
                   swal ( "Success" ,  "successful transaction!" ,  "success" );
