@@ -30,7 +30,7 @@ $(function() {
                   swal ( "Error" ,  "User denied transaction signature!" ,  "error" );
                   console.log('User denied transaction signature.');
                 } else {
-                  swal ( "Error" ,  "Max mint amount per wallet exceeded!" ,  "error" );
+                  swal ( "Error" ,  "transaction failed!" ,  "error" );
                   console.error(error);
                 }
               });
