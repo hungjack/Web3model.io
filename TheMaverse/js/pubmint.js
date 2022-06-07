@@ -1,8 +1,7 @@
 $(function() {
-    $("#mint2").click(function() {
+    $("#mint").click(function() {
         const nameElement = document.getElementById("amount");
         const amount = nameElement.value;
-            $("pre").text(JSON.stringify(data, null, 2));
             const price = web3.utils.toWei('0.08', 'ether')*amount;
             //document.getElementById('message').textContent='交易處理中,請稍後';
             console.log(price);
@@ -83,7 +82,7 @@ $(function() {
     })
     //計算操作
     function setTotal(){
-    $("#showPrice").html("Total Price:"+(parseInt($('input[name=' + fieldName + ']').val())*0.065).toFixed(3)+"ETH");//toFixed()是保留小數點的函式很實用哦
+    $("#showPrice").html("Total Price:"+(parseInt($('input[name=' + fieldName + ']').val())*0.08).toFixed(3)+"ETH");//toFixed()是保留小數點的函式很實用哦
     }
     //初始化
     setTotal();

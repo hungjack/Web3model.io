@@ -894,7 +894,7 @@ var abi = [
 						showchainId.innerHTML = "Please connect to main network";
 					}
 					showAccount.innerHTML = "Address:"+accounts[0];
-					showPrice.innerHTML = "Total Price:0.065ETH";
+					showPrice.innerHTML = "Total Price:0.080ETH";
 					console.log(accounts[0]);
 					//console.log(Contract);
 					//web3.eth.sendTransaction({/* ... */});
