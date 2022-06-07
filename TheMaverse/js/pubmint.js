@@ -1,5 +1,5 @@
 $(function() {
-    $("#mint").click(function() {
+    $("#mint2").click(function() {
         const nameElement = document.getElementById("amount");
         const amount = nameElement.value;
             $("pre").text(JSON.stringify(data, null, 2));
